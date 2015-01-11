@@ -9,9 +9,10 @@
     <% @posts.each do |post| %>
      <h2> <%= post.name %> </h2>
     <% end %>
+    <a href='/posts/new'>Add a new post!</a>
   <% else %>
       <h3>We don't have any posts yet!</h3>
-      <a href='#'>Why not add the first?</a>
+      <a href='/posts/new'>Why not add the first?</a>
   <% end %>
   </body>
 

@@ -10,6 +10,7 @@ describe 'posts page' do
       expect(page).to have_link 'Why not add the first?'
     end
 
+
   end
 
   context 'when posts have been added' do
@@ -25,6 +26,15 @@ describe 'posts page' do
     it 'should not show the no content message' do
       visit '/'
       expect(page).not_to have_content 'We don\'t have any posts yet!'
+    end
+
+    it 'should let you add a post' do
+      visit '/'
+      click_link 'Add a new post!'
+      fill_in 'Name', with: 'New Post'
+      click_button 'Create Post'
+      expect(page).to have_content 'New Post'
+      expect(current_path).to eq '/'
     end
 
   end
