@@ -11,8 +11,13 @@ feature 'visiting homepage' do
 
     scenario 'user should be asked to sign in or register' do
       visit '/'
-      expect(page).to have_centent 'Sign In'
-      expect(page).to have_content 'Register'
+      expect(page).to have_link 'Sign In'
+      expect(page).to have_link 'Register'
+    end
+
+    scenario 'user should not be asked to sign out' do
+      visit '/'
+      expect(page).not_to have_link 'Sign Out'
     end
 
   end
