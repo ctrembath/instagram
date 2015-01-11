@@ -1,1 +1,19 @@
-We don't have any posts yet!
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body>
+  <h1>Instagram</h1>
+  <%if @posts.any?%>
+    <% @posts.each do |post| %>
+     <h2> <%= post.name %> </h2>
+    <% end %>
+  <% else %>
+      <h3>We don't have any posts yet!</h3>
+      <a href='#'>Why not add the first?</a>
+  <% end %>
+  </body>
+
+
+</html>
