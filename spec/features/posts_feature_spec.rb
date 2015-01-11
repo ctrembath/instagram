@@ -10,21 +10,26 @@ describe 'posts page' do
       expect(page).to have_link 'Why not add the first?'
     end
 
+    it 'should let you create a post' do
+      visit '/'
+      click_link 'Why not add the first?'
+      fill_in 'Name', with: 'New Post'
+      click_button 'Create Post'
+      expect(page).to have_content 'New Post'
+      expect(current_path).to eq '/'
+    end
+
 
   end
 
   context 'when posts have been added' do
     before do
-      Post.create(name:'First Post')
+      Post.create(name:'First')
     end
 
     it 'should show the posts' do
       visit '/'
-      expect(page).to have_content 'First Post'
-    end
-
-    it 'should not show the no content message' do
-      visit '/'
+      expect(page).to have_content 'First'
       expect(page).not_to have_content 'We don\'t have any posts yet!'
     end
 
@@ -36,6 +41,19 @@ describe 'posts page' do
       expect(page).to have_content 'New Post'
       expect(current_path).to eq '/'
     end
+
+    it 'should give each post its own page' do
+      visit '/'
+      click_link 'First'
+      expect(page).to have_content 'First'
+      # expect(current_path).to eq "/posts/#{first.id}"
+    end
+
+    # it 'should let a post be deleted' do
+    #   visit '/'
+    #   click_link 'First'
+    #   expect(page)
+    # end
 
   end
 
