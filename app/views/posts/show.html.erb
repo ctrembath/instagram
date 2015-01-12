@@ -1,4 +1,17 @@
 <p><%= @post.name %></p>
 
+<% if @post.comments.any? %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+      <%= comment.comment %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> No Comments </p>
+<% end %>
+
+<%= link_to "Leave a Comment", new_post_comment_path(@post) %>
 
 <%= link_to "Delete Post", post_path(@post), method: :delete %>
