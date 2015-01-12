@@ -15,6 +15,11 @@ feature 'visiting homepage' do
       expect(page).to have_link 'Register'
     end
 
+    scenario 'user should not be asked to sign out' do
+      visit '/'
+      expect(page).not_to have_link 'Sign Out'
+    end
+
   end
 
   context 'user has signed in' do
@@ -28,10 +33,17 @@ feature 'visiting homepage' do
       click_buttion('Register')
     end
 
-    scenario 'user should not be asked to sign out' do
+    it 'should not ask user to sign in' do
       visit '/'
-      expect(page).not_to have_link 'Sign Out'
+      expect(page).to_not have_link 'Sign In'
+      expect(page).to_not have_link 'Register'
     end
+
+    it 'should ask user to sign out' do
+      visit '/'
+      expect(page).to have_link 'Sign Out'
+    end
+
 
   end
 
