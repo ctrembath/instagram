@@ -30,7 +30,7 @@ feature 'visiting homepage' do
       fill_in('Email', with: 'test@tester.com')
       fill_in('Password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
-      click_button('Register')
+      click_button('Sign up')
     end
 
     it 'should not ask user to sign in' do
