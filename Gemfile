@@ -34,6 +34,7 @@ end
 gem "paperclip", "~> 4.2"
 gem 'rmagick'
 gem 'devise'
+gem 'rails_12factor'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
