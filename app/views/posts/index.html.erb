@@ -8,6 +8,7 @@
   <%if @posts.any?%>
     <% @posts.each do |post| %>
      <%= link_to "#{post.name}" , post_path(post) %>
+     <%= image_tag post.image.url(:thumb) %>
     <% end %>
     <a href='/posts/new'>Add a new post!</a>
   <% else %>

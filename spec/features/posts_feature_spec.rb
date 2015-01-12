@@ -41,6 +41,7 @@ describe 'posts page' do
       fill_in 'Name', with: 'New Post'
       click_button 'Create Post'
       expect(page).to have_content 'New Post'
+      
       expect(current_path).to eq '/'
     end
 

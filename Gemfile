@@ -31,6 +31,9 @@ group :test do
   gem 'capybara'
 end
 
+gem "paperclip", "~> 4.2"
+gem 'rmagick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
