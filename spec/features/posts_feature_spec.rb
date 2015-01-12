@@ -46,7 +46,6 @@ describe 'posts page' do
       visit '/'
       click_link 'First'
       expect(page).to have_content 'First'
-      # expect(current_path).to eq "/posts/#{first.id}"
     end
 
     it 'should let a post be deleted' do
