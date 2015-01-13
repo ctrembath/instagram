@@ -51,9 +51,6 @@ describe 'posts page' do
 
 
       it 'should show the posts' do
-        p '***************'
-        p @user.id
-        p '***************'
         visit '/'
         expect(page).to have_content 'First'
         expect(page).not_to have_content 'We don\'t have any posts yet!'
@@ -81,6 +78,12 @@ describe 'posts page' do
         click_link 'Delete Post'
         expect(page).not_to have_content 'First'
         expect(page).to have_content 'Post deleted'
+      end
+
+      it 'the post should contain the user email adress' do
+        visit '/'
+        click_link 'First'
+        expect(page).to have_content "#{@user.email}"
       end
 
     end

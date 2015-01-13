@@ -6,6 +6,7 @@
   <ul>
     <% @post.comments.each do |comment| %>
       <li>
+      <%= link_to "#{User.find(comment.user_id).email}", user_path(@user) %>
       <%= comment.comment %>
       </li>
     <% end %>

@@ -5,9 +5,6 @@ describe 'comments' do
 
 
   context 'when leaving a comment' do
-    # before do
-    #   Post.create(name:'First')
-    # end
 
     before do
       @user = User.create(email:'test@test.com', password: 'testtest', password_confirmation: 'testtest')
