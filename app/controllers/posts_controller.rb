@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
+    p current_user.id
     @posts = Post.all
   end
 
@@ -11,8 +12,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to '/'
+    @post = Post.create(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to '/'
+    else
+      flash[:notice] = "Sorry! We couldn't save that"
+      redirect_to '/'
+    end
   end
 
   def post_params
