@@ -1,5 +1,6 @@
-<p><%= @post.name %></p>
+<h1><%= @post.name %></h1>
 <%= image_tag @post.image.url(:medium) %>
+<%= link to "#{@user.email}", user_path(@user) %>
 
 <% if @post.comments.any? %>
   <ul>

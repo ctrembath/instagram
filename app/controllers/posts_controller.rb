@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    p current_user.id
     @posts = Post.all
   end
 
@@ -28,6 +27,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    userId = @post.user_id
+    @user = User.find(userId)
   end
 
   def destroy
