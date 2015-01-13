@@ -44,13 +44,16 @@ describe 'posts page' do
     end
 
     context 'when posts have been added' do
-      # before do
-      #   Post.create(name:'First')
-      # end
+      before do
+        @user = User.create(email:'test@test.com', password: 'testtest', password_confirmation: 'testtest')
+        @post = Post.create(name:'First', user_id: @user.id)
+      end
 
-      let!(:first){Post.create(name:'First')}
 
       it 'should show the posts' do
+        p '***************'
+        p @user.id
+        p '***************'
         visit '/'
         expect(page).to have_content 'First'
         expect(page).not_to have_content 'We don\'t have any posts yet!'
@@ -62,7 +65,6 @@ describe 'posts page' do
         fill_in 'Name', with: 'New Post'
         click_button 'Create Post'
         expect(page).to have_content 'New Post'
-        
         expect(current_path).to eq '/'
       end
 
@@ -70,7 +72,7 @@ describe 'posts page' do
         visit '/'
         click_link 'First'
         expect(page).to have_content 'First'
-        expect(current_path).to eq "/posts/#{first.id}"
+        expect(current_path).to eq "/posts/#{@post.id}"
       end
 
       it 'should let a post be deleted' do

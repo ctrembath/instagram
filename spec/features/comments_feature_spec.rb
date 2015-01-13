@@ -9,7 +9,10 @@ describe 'comments' do
     #   Post.create(name:'First')
     # end
 
-    let!(:first){Post.create(name:'First')}
+    before do
+      @user = User.create(email:'test@test.com', password: 'testtest', password_confirmation: 'testtest')
+      @post = Post.create(name:'First', user_id: @user.id)
+    end
 
     context 'when signed out' do
 
@@ -39,7 +42,7 @@ describe 'comments' do
         click_link 'Leave a Comment'
         fill_in "Comment", with: 'This is a comment'
         click_button 'Leave Comment'
-        expect(current_path).to eq "/posts/#{first.id}"
+        expect(current_path).to eq "/posts/#{@post.id}"
         expect(page).to have_content 'This is a comment' 
       end
 
