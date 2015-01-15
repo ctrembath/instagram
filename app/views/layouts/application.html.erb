@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Instagram</title>
+<center>
+  <title>insta.</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Sarpanch:400,800,700,500,600' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+  <%= image_tag "algae.png", :class => "logo" %>
+  <h1> instantaneous.</h1>
+</header>
+
 <%= notice %>
 <%= yield %>
 
@@ -16,6 +23,6 @@
   <%= link_to "Sign In", new_user_session_path%>
   <%= link_to "Register", new_user_registration_path %>
 <% end %>
-
+</center>
 </body>
 </html>
