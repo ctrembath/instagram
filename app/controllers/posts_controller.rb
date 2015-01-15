@@ -10,10 +10,6 @@ class PostsController < ApplicationController
 
   end
 
-  def posts
-    @post
-  end
-
   def create
     @post = Post.create(post_params)
     @post.user_id = current_user.id
